@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestión de Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulario para agregar una nueva cita -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Crea una nueva cita</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input 
+          placeholder="Cita" 
+          [(ngModel)]="nuevaCita.frase"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input 
+          placeholder="Autor" 
+          [(ngModel)]="nuevaCita.autor"
+        ></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="agregarCita()">Agregar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de citas existentes -->
+  <ion-list>
+    <app-cita
+      *ngFor="let cita of citas"
+      [frase]="cita.frase"
+      [autor]="cita.autor"
+      [id]="cita.id"
+      (eliminarCita)="eliminarCita($event)"
+    ></app-cita>
+  </ion-list>
+</ion-content>
